@@ -25,11 +25,11 @@ const ContactSection = () => {
           <AnimatedSection delay={100}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
               <a
-                href="tel:07046194679"
+                href="tel:+2347046194679"
                 className="flex items-center gap-3 glass rounded-xl px-6 py-4 hover-lift group"
               >
                 <Phone className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
-                <span className="font-medium">07046194679</span>
+                <span className="font-medium">+234 704 6194 679</span>
               </a>
             </div>
           </AnimatedSection>
