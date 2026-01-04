@@ -119,7 +119,7 @@ const AboutSection = () => {
                     </p>
                   </div>
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-primary">1y5+</p>
+                    <p className="text-3xl font-bold text-primary">15+</p>
                     <p className="text-sm text-muted-foreground">
                       Projects Built
                     </p>
