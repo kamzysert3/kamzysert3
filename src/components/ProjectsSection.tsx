@@ -62,7 +62,7 @@ const ProjectsSection = () => {
           </AnimatedSection>
 
           {/* Projects grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
             {projects.map((project, index) => {
               const Icon = project.icon;
               return (
