@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, Linkedin, Instagram, Github, Download } from "lucide-react";
+import { Phone, Mail, Linkedin, Instagram, Github, Download } from "lucide-react";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
 const ContactSection = () => {
@@ -15,9 +15,8 @@ const ContactSection = () => {
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mb-8" />
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              I'm currently looking for new opportunities and would love to hear
-              from you. Whether you have a question or just want to say hi, feel
-              free to reach out!
+              I'm currently looking for new opportunities and would love to hear from you.
+              Whether you have a question or just want to say hi, feel free to reach out!
             </p>
           </AnimatedSection>
 
@@ -25,11 +24,18 @@ const ContactSection = () => {
           <AnimatedSection delay={100}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
               <a
+                href="mailto:Kamsinnaegbuna@gmail.com"
+                className="flex items-center gap-3 glass rounded-xl px-6 py-4 hover-lift group"
+              >
+                <Mail className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+                <span className="font-medium">Kamsinnaegbuna@gmail.com</span>
+              </a>
+              <a
                 href="tel:+2347046194679"
                 className="flex items-center gap-3 glass rounded-xl px-6 py-4 hover-lift group"
               >
                 <Phone className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
-                <span className="font-medium">+234 704 6194 679</span>
+                <span className="font-medium">+234 704 619 4679</span>
               </a>
             </div>
           </AnimatedSection>

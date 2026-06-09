@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? "glass py-3" : "py-6"
       }`}
     >
@@ -53,11 +53,7 @@ const Navbar = () => {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <Button variant="ghost" size="sm" asChild>
-              <a
-                href="https://github.com/kamzysert3"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://github.com/kamzysert3" target="_blank" rel="noopener noreferrer">
                 <Github className="h-4 w-4" />
               </a>
             </Button>
@@ -74,11 +70,7 @@ const Navbar = () => {
             className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
@@ -98,11 +90,7 @@ const Navbar = () => {
               ))}
               <div className="pt-3 border-t border-border flex gap-3">
                 <Button variant="outline" size="sm" className="flex-1" asChild>
-                  <a
-                    href="https://github.com/kamzysert3"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href="https://github.com/kamzysert3" target="_blank" rel="noopener noreferrer">
                     <Github className="mr-2 h-4 w-4" />
                     GitHub
                   </a>

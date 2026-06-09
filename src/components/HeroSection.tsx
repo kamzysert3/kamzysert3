@@ -7,14 +7,8 @@ const HeroSection = () => {
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-primary/20 via-transparent to-transparent rounded-full blur-3xl animate-float" />
-        <div
-          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-accent/20 via-transparent to-transparent rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1.5s" }}
-        />
-        <div
-          className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-2xl animate-float"
-          style={{ animationDelay: "0.5s" }}
-        />
+        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-accent/20 via-transparent to-transparent rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-2xl animate-float" style={{ animationDelay: '0.5s' }} />
       </div>
 
       {/* Grid pattern overlay */}
@@ -29,19 +23,20 @@ const HeroSection = () => {
 
           {/* Name */}
           <h1 className="animate-in stagger-2 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight">
-            Kamsicho Raymond <span className="text-gradient">Nnaegbuna</span>
+            Kamsicho Raymond{" "}
+            <span className="text-gradient">Nnaegbuna</span>
           </h1>
 
           {/* Title */}
           <p className="animate-in stagger-3 text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-6 font-display">
-            Full-Stack Developer & AI Engineer
+            Full-Stack Engineer · AI/ML Developer · CTO
           </p>
 
           {/* Description */}
           <p className="animate-in stagger-4 text-muted-foreground max-w-2xl mx-auto mb-10 text-base sm:text-lg leading-relaxed">
-            Software Engineer, passionate about solving real-world problems with
-            innovative technology. Specialized in React, Node.js, Python, and
-            AI/ML integration.
+            CTO at Eventix Africa, building production AI systems with multi-agent orchestration, 
+            LLM fine-tuning, and RAG pipelines. Software Engineering student at Veritas University 
+            Abuja shipping full-stack products with React, Node.js, Python, and modern ML.
           </p>
 
           {/* CTA Buttons */}
@@ -53,11 +48,7 @@ const HeroSection = () => {
               </a>
             </Button>
             <Button variant="heroOutline" size="lg" asChild>
-              <a
-                href="https://github.com/kamzysert3"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://github.com/kamzysert3" target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-5 w-5" />
                 View GitHub
               </a>

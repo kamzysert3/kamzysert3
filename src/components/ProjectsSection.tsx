@@ -1,30 +1,27 @@
-import { ExternalLink, Github, Bot, Leaf, Gift } from "lucide-react";
+import { ExternalLink, Github, Bot, Leaf, Ticket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
 const projects = [
   {
-    title: "AI-Powered Chatroom",
-    description:
-      "Designed an interactive chat platform with private and group messages, integrated with a personalized AI chat assistant for enhanced user experience.",
-    icon: Bot,
-    tags: ["React", "Node.js", "AI", "WebSocket"],
-    gradient: "from-primary/20 to-accent/20",
-  },
-  {
     title: "Maize Leaf Virus Detection",
-    description:
-      "Developed a mobile app using HTML, Tailwind CSS, and JavaScript, integrating an AI model for real-time detection of plant diseases.",
+    description: "Computer vision app hitting 94% disease classification accuracy with YOLO v11 and Inception v4, deployed on-device via TFLite for sub-second real-time inference.",
     icon: Leaf,
-    tags: ["Machine Learning", "TFLite", "JavaScript", "Tailwind CSS"],
+    tags: ["YOLO v11", "Inception v4", "TFLite", "Computer Vision"],
     gradient: "from-accent/20 to-primary/20",
   },
   {
-    title: "Personalized Digital Experience",
-    description:
-      "Creating an interactive digital storybook and progress-based puzzle game as a unique, memory-focused gift project with engaging animations.",
-    icon: Gift,
-    tags: ["React", "TypeScript", "Animation", "Game Dev"],
+    title: "AI-Powered Chatroom",
+    description: "Real-time multi-agent chat platform with under 200ms message latency, personalised Llama 3.1 fine-tuning, and private/group messaging on Next.js + Flask.",
+    icon: Bot,
+    tags: ["Next.js", "Flask", "Llama 3.1", "Multi-Agent"],
+    gradient: "from-primary/20 to-accent/20",
+  },
+  {
+    title: "Eventix Africa Platform",
+    description: "Scalable web and mobile event management platform built with PHP serving thousands of users with features like ticketing, analytics, and real-time notifications.",
+    icon: Ticket,
+    tags: ["PHP", "MySQL", "Event Management"],
     gradient: "from-primary/20 to-accent/20",
   },
 ];
@@ -55,10 +52,8 @@ const ProjectsSection = () => {
                 >
                   <div className="group glass rounded-2xl p-6 hover-lift relative overflow-hidden h-full">
                     {/* Background gradient */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                    />
-
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                    
                     <div className="relative z-10">
                       {/* Icon */}
                       <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -108,11 +103,7 @@ const ProjectsSection = () => {
           {/* View more button */}
           <AnimatedSection className="text-center mt-12" delay={400}>
             <Button variant="heroOutline" size="lg" asChild>
-              <a
-                href="https://github.com/kamzysert3"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://github.com/kamzysert3" target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-5 w-5" />
                 View All Projects on GitHub
               </a>

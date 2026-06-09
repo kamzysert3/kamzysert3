@@ -32,9 +32,7 @@ const AboutSection = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
           <AnimatedSection className="text-center mb-16">
-            <p className="text-primary font-mono text-sm mb-2">
-              Get to Know Me
-            </p>
+            <p className="text-primary font-mono text-sm mb-2">Get to Know Me</p>
             <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4">
               About Me
             </h2>
@@ -48,11 +46,8 @@ const AboutSection = () => {
                 {/* Decorative elements */}
                 <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl" />
                 <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/30 rounded-full blur-xl animate-float" />
-                <div
-                  className="absolute -bottom-2 -left-2 w-32 h-32 bg-accent/30 rounded-full blur-xl animate-float"
-                  style={{ animationDelay: "1s" }}
-                />
-
+                <div className="absolute -bottom-2 -left-2 w-32 h-32 bg-accent/30 rounded-full blur-xl animate-float" style={{ animationDelay: '1s' }} />
+                
                 {/* Image container */}
                 <div className="relative glass rounded-3xl p-2">
                   <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10">
@@ -65,9 +60,7 @@ const AboutSection = () => {
 
                   {/* Floating badge */}
                   <div className="absolute -bottom-3 -right-3 glass rounded-xl px-4 py-2 shadow-lg">
-                    <p className="text-sm font-semibold text-primary">
-                      Open to Work
-                    </p>
+                    <p className="text-sm font-semibold text-primary">Open to Work</p>
                   </div>
                 </div>
               </div>
@@ -83,40 +76,33 @@ const AboutSection = () => {
 
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    I'm Kamsicho Raymond Nnaegbuna, a Software Engineering
-                    student at Veritas University Abuja with a deep passion for
-                    creating technology that makes a real difference. My journey
-                    in tech started with curiosity about how things work, and it
-                    has evolved into a mission to solve real-world problems
-                    through innovative software solutions.
+                    I'm Kamsicho Nnaegbuna, a Full-Stack Engineer and AI/ML developer currently 
+                    serving as Chief Technology Officer at Eventix Africa, where I architect 
+                    multi-agent LLM systems, RAG pipelines, and scalable cloud infrastructure 
+                    that ship real product to real users.
                   </p>
 
                   <p>
-                    With hands-on experience in both frontend and backend
-                    development, I've had the privilege of working with amazing
-                    teams at companies like Greysoft Technologies and CoLab
-                    Innovation Hub. These experiences have shaped my approach to
-                    building scalable, user-centric applications.
+                    My work sits at the intersection of production engineering and applied AI — 
+                    fine-tuning Llama 3.1 models, designing vector-database retrieval, and building 
+                    Node.js and Python microservices on GCP. Earlier roles at Greysoft Technologies, 
+                    Emerging Trees, and CoLab Innovation Hub shaped my discipline around APIs, 
+                    testing, and clean component architecture.
                   </p>
 
                   <p>
-                    What excites me most is the intersection of AI and practical
-                    applications. From developing a Maize Leaf Virus Detection
-                    app to creating AI-powered chatrooms, I'm constantly
-                    exploring ways to leverage machine learning to create
-                    meaningful impact. When I'm not coding, you'll find me
-                    learning about the latest in AI research or contributing to
-                    open-source projects.
+                    Outside client work I build things I find interesting: a Maize Leaf Virus 
+                    detector hitting 94% accuracy with YOLO v11 and TFLite, a low-latency AI 
+                    chatroom on Next.js and Flask, and an adaptive digital storybook. I'm a 
+                    Software Engineering student at Veritas University Abuja, graduating July 2026.
                   </p>
                 </div>
 
                 {/* Quick stats */}
                 <div className="flex flex-wrap gap-6 pt-4">
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-primary">3+</p>
-                    <p className="text-sm text-muted-foreground">
-                      Years Coding
-                    </p>
+                    <p className="text-3xl font-bold text-primary">4+</p>
+                    <p className="text-sm text-muted-foreground">Years Coding</p>
                   </div>
                   <div className="text-center">
                     <p className="text-3xl font-bold text-primary">15+</p>
@@ -125,7 +111,7 @@ const AboutSection = () => {
                     </p>
                   </div>
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-primary">3</p>
+                    <p className="text-3xl font-bold text-primary">4</p>
                     <p className="text-sm text-muted-foreground">Companies</p>
                   </div>
                 </div>

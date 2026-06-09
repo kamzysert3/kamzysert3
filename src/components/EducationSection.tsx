@@ -8,9 +8,7 @@ const EducationSection = () => {
         <div className="max-w-4xl mx-auto">
           {/* Section header */}
           <AnimatedSection className="text-center mb-16">
-            <p className="text-primary font-mono text-sm mb-2">
-              Academic Background
-            </p>
+            <p className="text-primary font-mono text-sm mb-2">Academic Background</p>
             <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4">
               Education
             </h2>

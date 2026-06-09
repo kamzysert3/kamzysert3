@@ -3,28 +3,32 @@ import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
 const experiences = [
   {
+    company: "Eventix Africa",
+    role: "Chief Technology Officer",
+    period: "Jun 2025 - Present",
+    location: "Abuja, Nigeria",
+    description: "Leading multi-agent LLM orchestration, Llama 3.1 fine-tuning, and RAG pipelines on GCP. Cut time-to-market 40% and infrastructure costs 25% across the web and mobile platform.",
+  },
+  {
     company: "Greysoft Technologies",
-    role: "Back End Developer",
+    role: "Back-End Developer",
     period: "Jul 2024 - Oct 2024",
     location: "Kaduna, Nigeria",
-    description:
-      "Worked as a Back End Developer for 4 months, building scalable server-side applications.",
+    description: "Built containerised Node.js/Express services with 99.2% uptime, cut MongoDB query latency 35%, and shipped TypeScript REST APIs adopted by three frontend teams.",
   },
   {
     company: "Emerging Trees LTD",
     role: "Software Development Intern",
     period: "Jul 2023 - Oct 2023",
-    location: "Kaduna State, Nigeria",
-    description:
-      "Interned for 4 months, gaining hands-on experience in software development.",
+    location: "Kaduna, Nigeria",
+    description: "Reduced bug backlog 30% with Python test scripting and shortened QA review cycles 20% via reproducible test documentation and peer code reviews.",
   },
   {
     company: "CoLab Innovation Hub",
     role: "Frontend Developer",
     period: "Jul 2022 - Oct 2022",
     location: "Kaduna, Nigeria",
-    description:
-      "Worked as a Frontend Developer for 4 months, creating responsive user interfaces.",
+    description: "Built responsive React.js interfaces with real-time REST integrations, increasing session duration 45% and cutting UI rendering bugs 60% with TypeScript component architecture.",
   },
 ];
 
@@ -35,9 +39,7 @@ const ExperienceSection = () => {
         <div className="max-w-4xl mx-auto">
           {/* Section header */}
           <AnimatedSection className="text-center mb-16">
-            <p className="text-primary font-mono text-sm mb-2">
-              Career Journey
-            </p>
+            <p className="text-primary font-mono text-sm mb-2">Career Journey</p>
             <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4">
               Work Experience
             </h2>
@@ -64,17 +66,9 @@ const ExperienceSection = () => {
                   <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full md:-translate-x-1/2 shadow-[0_0_20px_hsl(var(--primary)/0.5)]" />
 
                   {/* Content */}
-                  <div
-                    className={`ml-8 md:ml-0 md:w-1/2 ${
-                      index % 2 === 0 ? "md:pl-12" : "md:pr-12 md:text-right"
-                    }`}
-                  >
+                  <div className={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pl-12" : "md:pr-12 md:text-right"}`}>
                     <div className="glass rounded-xl p-6 hover-lift group">
-                      <div
-                        className={`flex items-center gap-2 text-primary mb-2 ${
-                          index % 2 === 0 ? "" : "md:justify-end"
-                        }`}
-                      >
+                      <div className={`flex items-center gap-2 text-primary mb-2 ${index % 2 === 0 ? "" : "md:justify-end"}`}>
                         <Briefcase className="h-4 w-4" />
                         <span className="font-mono text-sm">{exp.role}</span>
                       </div>
@@ -82,12 +76,8 @@ const ExperienceSection = () => {
                       <h3 className="font-display text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                         {exp.company}
                       </h3>
-
-                      <div
-                        className={`flex flex-wrap gap-4 text-sm text-muted-foreground mb-3 ${
-                          index % 2 === 0 ? "" : "md:justify-end"
-                        }`}
-                      >
+                      
+                      <div className={`flex flex-wrap gap-4 text-sm text-muted-foreground mb-3 ${index % 2 === 0 ? "" : "md:justify-end"}`}>
                         <span className="flex items-center gap-1">
                           <Calendar className="h-3.5 w-3.5" />
                           {exp.period}

@@ -1,47 +1,26 @@
-import { Code, Database, Brain, Layers } from "lucide-react";
+import { Code, Database, Brain, Cloud } from "lucide-react";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
 const skillCategories = [
   {
-    title: "Frontend",
+    title: "Languages & Frontend",
     icon: Code,
-    skills: [
-      "React.js",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "HTML",
-      "CSS",
-      "Tailwind CSS",
-    ],
+    skills: ["TypeScript", "JavaScript", "Python", "React.js", "Next.js", "HTML", "CSS", "Tailwind"],
   },
   {
-    title: "Backend",
+    title: "Backend & Databases",
     icon: Database,
-    skills: ["Node.js", "Express.js", "Python", "Flask", "MongoDB", "SQL"],
+    skills: ["Node.js", "Express.js", "Flask", "REST APIs", "MongoDB", "SQL", "Indexing", "Normalisation"],
   },
   {
     title: "AI / ML",
     icon: Brain,
-    skills: [
-      "Machine Learning",
-      "TFLite",
-      "YOLO v11",
-      "Llama 3.1",
-      "Inception v4",
-      "OCR",
-      "AI Fine-tuning",
-    ],
+    skills: ["LLM Fine-tuning", "Llama 3.1", "Multi-Agent Orchestration", "RAG Pipelines", "Vector DBs", "PyTorch", "TensorFlow", "TFLite", "scikit-learn", "YOLO v11", "Inception v4", "OCR", "Prompt Engineering"],
   },
   {
-    title: "Other",
-    icon: Layers,
-    skills: [
-      "Blockchain Integration",
-      "Mobile Development",
-      "Web Integration",
-      "SQL Optimization",
-    ],
+    title: "Cloud & DevOps",
+    icon: Cloud,
+    skills: ["Google Cloud Platform", "Docker", "CI/CD", "Git", "GitHub", "Real-time Inference"],
   },
 ];
 
@@ -74,9 +53,7 @@ const SkillsSection = () => {
                       <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <Icon className="h-6 w-6 text-primary" />
                       </div>
-                      <h3 className="font-display text-xl font-semibold">
-                        {category.title}
-                      </h3>
+                      <h3 className="font-display text-xl font-semibold">{category.title}</h3>
                     </div>
 
                     <div className="flex flex-wrap gap-2">
@@ -97,9 +74,7 @@ const SkillsSection = () => {
 
           {/* Interests section */}
           <AnimatedSection className="mt-16 text-center" delay={500}>
-            <h3 className="font-display text-xl font-semibold mb-6">
-              Interests & Passions
-            </h3>
+            <h3 className="font-display text-xl font-semibold mb-6">Interests & Passions</h3>
             <div className="flex flex-wrap justify-center gap-4">
               {[
                 "Solving Real-World Problems",
