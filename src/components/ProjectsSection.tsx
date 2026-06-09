@@ -1,28 +1,49 @@
-import { ExternalLink, Github, Bot, Leaf, Ticket } from "lucide-react";
+import { ExternalLink, Github, Bot, Leaf, Ticket, HeartPulse } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
 const projects = [
   {
     title: "Maize Leaf Virus Detection",
-    description: "Computer vision app hitting 94% disease classification accuracy with YOLO v11 and Inception v4, deployed on-device via TFLite for sub-second real-time inference.",
+    description:
+      "Computer vision app hitting 94% disease classification accuracy with YOLO v11 and Inception v4, deployed on-device via TFLite for sub-second real-time inference.",
     icon: Leaf,
     tags: ["YOLO v11", "Inception v4", "TFLite", "Computer Vision"],
     gradient: "from-accent/20 to-primary/20",
+    codelink: "https://github.com/kamzysert3/maize_leaf_virus_detection_api",
+    demolink: "https://veritas-maize-virus-detection-system.onrender.com/",
+    allow: ["code", "demo"],
   },
   {
     title: "AI-Powered Chatroom",
-    description: "Real-time multi-agent chat platform with under 200ms message latency, personalised Llama 3.1 fine-tuning, and private/group messaging on Next.js + Flask.",
+    description:
+      "Real-time multi-agent chat platform with under 200ms message latency, personalised Llama 3.1 fine-tuning, and private/group messaging on Next.js + Flask.",
     icon: Bot,
     tags: ["Next.js", "Flask", "Llama 3.1", "Multi-Agent"],
     gradient: "from-primary/20 to-accent/20",
+    codelink: "https://github.com/kamzysert3/Chatroom-App",
+    demolink: "https://greysoft-intern-chat-app.onrender.com/",
+    allow: ["code"],
   },
   {
     title: "Eventix Africa Platform",
-    description: "Scalable web and mobile event management platform built with PHP serving thousands of users with features like ticketing, analytics, and real-time notifications.",
+    description:
+      "Scalable web and mobile event management platform built with PHP serving thousands of users with features like ticketing, analytics, and real-time notifications.",
     icon: Ticket,
     tags: ["PHP", "MySQL", "Event Management"],
     gradient: "from-primary/20 to-accent/20",
+    demolink: "http://eventixafrica.com/",
+    allow: ["demo"],
+  },
+  {
+    title: "Nura Assistant",
+    description:
+      "Healthcare chatbot leveraging Retrieval-Augmented Generation (RAG) with Pinecone vector search, biomedical embeddings, and large language models to deliver accurate, context-aware health information and assistance.",
+    icon: HeartPulse,
+    tags: ["Python", "RAG", "Pinecone", "LangChain", "LLMs"],
+    gradient: "from-primary/20 to-accent/20",
+    demolink: "https://nura-web.vercel.app/",
+    allow: ["demo"],
   },
 ];
 
@@ -52,8 +73,10 @@ const ProjectsSection = () => {
                 >
                   <div className="group glass rounded-2xl p-6 hover-lift relative overflow-hidden h-full">
                     {/* Background gradient */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                    
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                    />
+
                     <div className="relative z-10">
                       {/* Icon */}
                       <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -84,14 +107,41 @@ const ProjectsSection = () => {
 
                       {/* Links */}
                       <div className="flex gap-3">
-                        <Button variant="ghost" size="sm" className="gap-2">
-                          <Github className="h-4 w-4" />
-                          Code
-                        </Button>
-                        <Button variant="ghost" size="sm" className="gap-2">
-                          <ExternalLink className="h-4 w-4" />
-                          Demo
-                        </Button>
+                        {/* only render what you are allowed */}
+                        {project.allow.includes("code") && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            asChild
+                            className="flex items-center gap-1"
+                          >
+                            <a
+                              href={project.codelink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Github className="mr-2 h-5 w-5" />
+                              View Code
+                            </a>
+                          </Button>
+                        )}
+                        {project.allow.includes("demo") && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            asChild
+                            className="flex items-center gap-1"
+                          >
+                            <a
+                              href={project.demolink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <ExternalLink className="mr-2 h-5 w-5" />
+                              View Demo
+                            </a>
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -103,7 +153,11 @@ const ProjectsSection = () => {
           {/* View more button */}
           <AnimatedSection className="text-center mt-12" delay={400}>
             <Button variant="heroOutline" size="lg" asChild>
-              <a href="https://github.com/kamzysert3" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/kamzysert3"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Github className="mr-2 h-5 w-5" />
                 View All Projects on GitHub
               </a>
