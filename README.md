@@ -80,7 +80,10 @@ Scalable web and mobile event management platform **serving thousands of users**
 
 <div align="center">
 
+<!--
 ![Kamsicho's GitHub Stats](https://github-readme-stats.vercel.app/api?username=kamzysert3&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)
+-->
+
 &nbsp;
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=kamzysert3&layout=compact&theme=tokyonight&hide_border=true)
 
