@@ -30,11 +30,38 @@ interface TraceRow {
 
 export function RequestTrace() {
   const metricId = (label: string) => `trace-${label.toLowerCase().replace(/\s+/g, "-")}-tip`;
-  const [nav] = useState<NavTiming>(readNavigationTiming);
+  const [nav, setNav] = useState<NavTiming>(readNavigationTiming);
   const [lcp, setLcp] = useState<number | null>(null);
   const [cls, setCls] = useState<number | null>(null);
   const clsSum = useRef(0);
   const gotCls = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    let cancelled = false;
+
+    const refresh = () => {
+      if (!cancelled) setNav(readNavigationTiming());
+    };
+
+    const navEntry = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
+    if (navEntry && navEntry.loadEventStart > 0) {
+      refresh();
+    } else {
+      window.addEventListener("load", refresh, { once: true });
+    }
+
+    const onPageshow = (event: PageTransitionEvent) => {
+      if (event.persisted) refresh();
+    };
+    window.addEventListener("pageshow", onPageshow);
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener("load", refresh);
+      window.removeEventListener("pageshow", onPageshow);
+    };
+  }, []);
 
   useEffect(() => {
     if (typeof PerformanceObserver === "undefined") return;
