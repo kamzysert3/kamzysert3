@@ -152,15 +152,13 @@ export const experience: ReadonlyArray<Experience> = [
   },
 ];
 
-export type ProjectVisualKind = "maize" | "chatroom" | "efinsuite" | "eventix" | "storybook" | "nura";
-
 export interface Project {
   id: string;
   title: string;
   summary: string;
   tags: string[];
-  visual: ProjectVisualKind;
-  fact?: string;
+  domain: string;
+  stat?: { value: string; label: string };
   codeUrl?: string;
   demoUrl?: string;
   note?: string;
@@ -168,15 +166,25 @@ export interface Project {
 
 export const projects: ReadonlyArray<Project> = [
   {
+    id: "eventix",
+    title: "Eventix Africa Platform",
+    summary:
+      "The event management platform I architect as CTO — automated CI/CD, branch-per-feature isolation, and edge-function backend.",
+    tags: ["React", "TypeScript", "Supabase Edge Functions", "Vercel", "Node.js", "Express"],
+    domain: "Events Platform",
+    stat: { value: "3x", label: "monthly deployments" },
+    demoUrl: "https://eventixafrica.com/",
+  },
+  {
     id: "maize",
     title: "Maize Leaf Virus Detection",
     summary:
       "On-device, real-time detection of maize leaf viruses with a YOLO v11 and Inception v4 pipeline exported to TFLite.",
     tags: ["YOLO v11", "Inception v4", "TFLite", "Computer Vision"],
-    visual: "maize",
-    fact: "94% validation accuracy",
+    domain: "Computer Vision",
+    stat: { value: "94%", label: "validation accuracy" },
     codeUrl: "https://github.com/kamzysert3/maize_leaf_virus_detection_api",
-    demoUrl: "https://veritas-maize-virus-detection-system.onrender.com/",
+    demoUrl: "https://maize-leaf-virus-detection-api.onrender.com/docs",
   },
   {
     id: "chatroom",
@@ -184,31 +192,9 @@ export const projects: ReadonlyArray<Project> = [
     summary:
       "Private and group messaging platform with a personalised Llama 3.1 agent layer, fine-tuned for low-latency responses.",
     tags: ["Next.js", "Flask", "Llama 3.1", "Multi-Agent"],
-    visual: "chatroom",
-    fact: "under 200ms message latency",
+    domain: "AI Messaging",
+    stat: { value: "<200ms", label: "message latency" },
     codeUrl: "https://github.com/kamzysert3/Chatroom-App",
-  },
-  {
-    id: "storybook",
-    title: "Adaptive Digital Storybook & Puzzle Game",
-    summary:
-      "Adaptive reading and puzzle experience with scikit-learn-inspired difficulty adjustment and OCR.",
-    tags: ["React", "Adaptive difficulty", "OCR"],
-    visual: "storybook",
-    fact: "3x session length",
-  },
-  {
-    id: "eventix",
-    title: "Eventix Africa Platform",
-    summary:
-      "The event management platform I architect as CTO — automated CI/CD, branch-per-feature isolation, and edge-function backend.",
-    tags: ["React", "TypeScript", "Supabase Edge Functions", "Vercel", "Node.js", "Express"],
-    visual: "eventix",
-    fact: "3x monthly deployments",
-    demoUrl: "https://eventixafrica.com/",
-    // TODO(owner): Site card previously said PHP/MySQL. Resume bullets say
-    // React/TypeScript, Supabase Edge Functions, Vercel, Node/Express. Using
-    // the resume as the source of truth. Confirm which is accurate.
   },
   {
     id: "nura",
@@ -216,11 +202,19 @@ export const projects: ReadonlyArray<Project> = [
     summary:
       "Retrieval-augmented health assistant built on a LangChain RAG pipeline.",
     tags: ["Python", "RAG", "LangChain", "LLMs"],
-    visual: "nura",
-    demoUrl: "https://nura-web.vercel.app/",
-    // TODO(owner): confirm stack — previous tags (Pinecone, biomedical
-    // embeddings) are not on the resume and could not be verified. Only
-    // generic, resume-supported tags are shown.
+    domain: "Conversational AI",
+    stat: { value: "95%", label: "user satisfaction" },
+    demoUrl: "https://nura-ai.onrender.com/docs",
+    codeUrl: "https://github.com/kamzysert3/nura_ai",
+  },
+    {
+    id: "storybook",
+    title: "Adaptive Digital Storybook & Puzzle Game",
+    summary:
+      "Adaptive reading and puzzle experience with scikit-learn-inspired difficulty adjustment and OCR.",
+    tags: ["React", "Adaptive difficulty", "OCR"],
+    stat: { value: "85%", label: "user engagement" },
+    domain: "Adaptive Learning",
   },
 ];
 

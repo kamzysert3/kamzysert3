@@ -30,8 +30,8 @@ export function buildResumeChunks(): ResumeChunk[] {
   projects.forEach((p) => {
     const source = `Project · ${p.title}`;
     chunks.push({ id: `project-${p.id}-summary`, text: p.summary, source });
-    if (p.fact) {
-      chunks.push({ id: `project-${p.id}-fact`, text: p.fact, source });
+    if (p.stat) {
+      chunks.push({ id: `project-${p.id}-stat`, text: `${p.stat.value} ${p.stat.label}`, source });
     }
   });
   chunks.push({

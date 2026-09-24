@@ -2,11 +2,12 @@
 
 # Kamsicho Nnaegbuna
 
-**Full-Stack Engineer · AI/ML Developer · CTO @ Eventix Africa**
+**Software Engineer · AI/ML Developer**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kamsicho-nnaegbuna)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/kamsichoraymondnnaegbuna)
-[![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:kamsicho@email.com)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/kamzysert3)
+[![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:Kamsinnaegbuna@gmail.com)
 
 *Building scalable systems and intelligent products — from multi-agent LLM pipelines to real-time computer vision apps.*
 
@@ -16,27 +17,34 @@
 
 ## About Me
 
-- 🏢 Currently **CTO at Eventix Africa**, architecting the full platform and AI layer
 - 🤖 Deep experience with **LLM fine-tuning, RAG pipelines, multi-agent orchestration,** and **computer vision**
 - 🔧 Delivered production systems at **Greysoft Technologies**, **CoLab Innovation Hub**, and **Emerging Trees LTD**
-- 🎓 Final-year **B.Sc. Software Engineering** student at Veritas University Abuja (Expected Jul 2026)
+- 🎓 **B.Sc. Software Engineering** (CGPA 4.37), Veritas University Abuja — Graduated Jul 2026
 - 🌍 Based in Abuja, Nigeria
 
 ---
 
 ## 🧠 Featured Projects
 
+### 🎟️ Eventix Africa Platform
+Scalable web and mobile event management platform with ticketing, real-time notifications, and actionable analytics — **3x monthly deployments** after moving to Supabase edge functions.
+> React · TypeScript · Supabase Edge Functions · Vercel · Node.js · Express
+
 ### 🌽 Maize Leaf Virus Detection App
-**94% classification accuracy** on validation data — real-time plant disease detection via on-device inference, built for field usability.
-> YOLO v11 · Inception v4 · TFLite · HTML · Tailwind CSS
+Real-time plant disease detection via on-device inference, built for field usability — **94% validation accuracy**.
+> YOLO v11 · Inception v4 · TFLite · Computer Vision
 
 ### 💬 AI-Powered Chatroom
-Real-time private & group messaging system with **sub-200ms latency**, backed by a personalised multi-agent LLM layer.
-> Next.js · Flask · Llama 3.1 · Multi-Agent · LLM Fine-tuning
+Real-time private & group messaging backed by a personalised multi-agent LLM layer — **under 200ms message latency**.
+> Next.js · Flask · Llama 3.1 · Multi-Agent
 
-### 🎟️ Eventix Africa Platform
-Scalable web and mobile event management platform **serving thousands of users** with ticketing, real-time notifications, and actionable analytics.
-> PHP · MySQL · Event Management
+### 🧾 eFinSuite
+AI-powered accounting, payroll, tax, and treasury platform for multi-country organizations, integrating the CRA's draft 2027 XML schema for Electronic Filing of Information Returns.
+> React · TypeScript · Supabase · Node.js · Vercel
+
+### 🦉 Nura Assistant
+Conversational AI assistant built on a RAG pipeline for grounded, retrieval-based answers.
+> Python · RAG · LangChain · LLMs
 
 ---
 
@@ -67,11 +75,11 @@ Scalable web and mobile event management platform **serving thousands of users**
 > Specialisations: Computer Vision (YOLO v11, Inception v4, TFLite) · LLM Fine-tuning (Llama 3.1) · RAG Pipelines · Multi-Agent Orchestration · Vector Databases · Prompt Engineering · OCR · Real-time Inference
 
 ### Cloud, DevOps & Databases
-![GCP](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/CI%2FCD-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 ![MySQL](https://img.shields.io/badge/SQL_DBs-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
 ---
@@ -79,10 +87,6 @@ Scalable web and mobile event management platform **serving thousands of users**
 ## 📊 GitHub Stats
 
 <div align="center">
-
-<!--
-![Kamsicho's GitHub Stats](https://github-readme-stats.vercel.app/api?username=kamzysert3&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)
--->
 
 &nbsp;
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=kamzysert3&layout=compact&theme=tokyonight&hide_border=true)
