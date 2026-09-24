@@ -236,53 +236,89 @@ export const skillClusters: ReadonlyArray<SkillCluster> = [
 export interface SkillPoint {
   name: string;
   cluster: SkillClusterId;
-  x: number;
-  y: number;
+}
+
+/** Every tool the resume claims, grouped by domain. Order within a cluster is editorial. */
+export const skillPoints: ReadonlyArray<SkillPoint> = [
+  // AI/ML cluster
+  { name: "PyTorch", cluster: "ai" },
+  { name: "TensorFlow", cluster: "ai" },
+  { name: "scikit-learn", cluster: "ai" },
+  { name: "Computer Vision", cluster: "ai" },
+  { name: "Deep Learning", cluster: "ai" },
+  { name: "LLMs", cluster: "ai" },
+  { name: "RAG", cluster: "ai" },
+  { name: "Vector databases", cluster: "ai" },
+  { name: "Multi-agent systems", cluster: "ai" },
+  { name: "Model fine-tuning", cluster: "ai" },
+  { name: "Prompt engineering", cluster: "ai" },
+  { name: "Real-time inference", cluster: "ai" },
+  // Backend cluster
+  { name: "Node.js", cluster: "backend" },
+  { name: "Express", cluster: "backend" },
+  { name: "FastAPI", cluster: "backend" },
+  { name: "Flask", cluster: "backend" },
+  { name: "REST APIs", cluster: "backend" },
+  { name: "AI moderation", cluster: "backend" },
+  // Frontend cluster
+  { name: "TypeScript", cluster: "frontend" },
+  { name: "JavaScript", cluster: "frontend" },
+  { name: "React", cluster: "frontend" },
+  { name: "Next.js", cluster: "frontend" },
+  { name: "HTML", cluster: "frontend" },
+  { name: "CSS", cluster: "frontend" },
+  // Data cluster
+  { name: "MongoDB", cluster: "data" },
+  { name: "Supabase (Postgres)", cluster: "data" },
+  // DevOps cluster
+  { name: "Docker", cluster: "devops" },
+  { name: "CI/CD", cluster: "devops" },
+  { name: "Git", cluster: "devops" },
+  { name: "GitHub", cluster: "devops" },
+];
+
+export interface SkillUsage {
+  projects: string[];
+  roles: string[];
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function mentions(skill: string, source: string): boolean {
+  const a = skill.toLowerCase();
+  const b = source.toLowerCase();
+  return new RegExp(`\\b${escapeRegExp(a)}\\b`).test(b) || new RegExp(`\\b${escapeRegExp(b)}\\b`).test(a);
 }
 
 /**
- * Hand-placed coordinates in a 1000 x 600 space. Purely illustrative — the
- * position of a skill says nothing about its real ranking. Nearest-neighbour
- * highlighting is computed from these coordinates at runtime.
+ * Derived index of where each skill turns up in the resume: matching against
+ * project tags and experience stacks/methods (whole-word, both directions).
+ * Pure derivation — nothing is hand-written, so it stays true to the source.
  */
-export const skillPoints: ReadonlyArray<SkillPoint> = [
-  // AI/ML cluster
-  { name: "PyTorch", cluster: "ai", x: 560, y: 130 },
-  { name: "TensorFlow", cluster: "ai", x: 640, y: 100 },
-  { name: "scikit-learn", cluster: "ai", x: 505, y: 205 },
-  { name: "Computer Vision", cluster: "ai", x: 465, y: 95 },
-  { name: "Deep Learning", cluster: "ai", x: 585, y: 55 },
-  { name: "LLMs", cluster: "ai", x: 705, y: 160 },
-  { name: "RAG", cluster: "ai", x: 770, y: 235 },
-  { name: "Vector databases", cluster: "ai", x: 660, y: 290 },
-  { name: "Multi-agent systems", cluster: "ai", x: 800, y: 330 },
-  { name: "Model fine-tuning", cluster: "ai", x: 615, y: 200 },
-  { name: "Prompt engineering", cluster: "ai", x: 700, y: 355 },
-  { name: "Real-time inference", cluster: "ai", x: 755, y: 100 },
-  // Backend cluster
-  { name: "Node.js", cluster: "backend", x: 265, y: 195 },
-  { name: "Express", cluster: "backend", x: 205, y: 250 },
-  { name: "FastAPI", cluster: "backend", x: 330, y: 265 },
-  { name: "Flask", cluster: "backend", x: 395, y: 315 },
-  { name: "REST APIs", cluster: "backend", x: 170, y: 130 },
-  { name: "AI moderation", cluster: "backend", x: 300, y: 165 },
-  // Frontend cluster
-  { name: "TypeScript", cluster: "frontend", x: 830, y: 470 },
-  { name: "JavaScript", cluster: "frontend", x: 900, y: 540 },
-  { name: "React", cluster: "frontend", x: 755, y: 505 },
-  { name: "Next.js", cluster: "frontend", x: 800, y: 415 },
-  { name: "HTML", cluster: "frontend", x: 950, y: 460 },
-  { name: "CSS", cluster: "frontend", x: 935, y: 560 },
-  // Data cluster
-  { name: "MongoDB", cluster: "data", x: 420, y: 480 },
-  { name: "SQL", cluster: "data", x: 355, y: 535 },
-  { name: "Supabase (Postgres)", cluster: "data", x: 495, y: 545 },
-  // DevOps cluster
-  { name: "Docker", cluster: "devops", x: 140, y: 435 },
-  { name: "CI/CD", cluster: "devops", x: 225, y: 385 },
-  { name: "Git", cluster: "devops", x: 270, y: 485 },
-  { name: "GitHub", cluster: "devops", x: 340, y: 425 },
-];
+export const skillUsage: ReadonlyMap<string, SkillUsage> = (() => {
+  const map = new Map<string, SkillUsage>();
+  for (const skill of skillPoints) {
+    const used: SkillUsage = { projects: [], roles: [] };
+    const seenProjects = new Set<string>();
+    const seenRoles = new Set<string>();
+    for (const project of projects) {
+      if (!seenProjects.has(project.title) && project.tags.some((t) => mentions(skill.name, t))) {
+        used.projects.push(project.title);
+        seenProjects.add(project.title);
+      }
+    }
+    for (const entry of experience) {
+      if (!seenRoles.has(entry.company) && [...entry.stack, ...entry.method].some((s) => mentions(skill.name, s))) {
+        used.roles.push(entry.company);
+        seenRoles.add(entry.company);
+      }
+    }
+    map.set(skill.name, used);
+  }
+  return map;
+})();
 
 export interface Education {
   degree: string;
@@ -319,6 +355,6 @@ export const education: Education = {
 export const KEY_FIGURES: ReadonlyArray<{ value: string; label: string }> = [
   { value: String(projects.length), label: "products shipped" },
   { value: String(experience.length), label: "companies, intern → CTO" },
-  { value: String(skillPoints.length), label: "tools on the map" },
+  { value: String(skillPoints.length), label: "tools in the stack" },
   { value: String(skillClusters.length), label: "engineering domains" },
 ];

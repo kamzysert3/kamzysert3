@@ -4,7 +4,7 @@ import { Hero } from "@/components/hero";
 import { About } from "@/components/about";
 import { ExperienceLog } from "@/components/experience-log";
 import { Projects } from "@/components/projects";
-import { SkillsVectorMap } from "@/components/skills-map";
+import { Skills } from "@/components/skills";
 import { Education } from "@/components/education";
 import { Contact } from "@/components/contact";
 import { SiteFooter } from "@/components/site-footer";
@@ -35,7 +35,7 @@ const Index = () => {
         <About />
         <ExperienceLog />
         <Projects />
-        <SkillsVectorMap />
+        <Skills />
         <Education />
         <Contact />
       </main>
