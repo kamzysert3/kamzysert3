@@ -123,8 +123,8 @@ export function getResumeIndex(): BM25Index {
 export const SUGGESTED_QUERIES: ReadonlyArray<string> = [
   "RAG",
   "CI/CD edge functions",
-  "computer vision",
+  "Backend",
   "Llama 3.1",
-  "latency",
+  "AI",
   "Postgres",
 ];

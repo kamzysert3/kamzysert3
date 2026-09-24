@@ -10,7 +10,7 @@ import {
 } from "@/data/resume";
 
 export function Hero() {
-  const { contact, openToWork } = profile;
+  const { contact } = profile;
 
   return (
     <section id="top" className="container grid gap-12 pb-16 pt-14 md:pb-24 md:pt-20 lg:grid-cols-12 lg:gap-10" aria-label="Introduction">
@@ -49,7 +49,7 @@ export function Hero() {
           </Button>
         </div>
 
-        <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-5">
+        <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-4">
           {KEY_FIGURES.map((f) => (
             <div key={f.label} className="bg-card px-4 py-3">
               <dt className="font-mono text-lg font-medium tnum text-foreground">{f.value}</dt>
@@ -77,16 +77,6 @@ export function Hero() {
             <li className="flex justify-between gap-4">
               <span className="text-muted-foreground">based</span>
               <span className="text-right text-foreground">{contact.location}</span>
-            </li>
-            <li className="flex justify-between gap-4">
-              <span className="text-muted-foreground">status</span>
-              <span className="text-right">
-                {openToWork ? (
-                  <span className="font-medium text-signal">open to work</span>
-                ) : (
-                  <span className="text-foreground">employed — email is best</span>
-                )}
-              </span>
             </li>
           </ul>
         </div>

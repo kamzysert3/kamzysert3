@@ -10,15 +10,6 @@ export const SITE_URL = "https://kamsicho.vercel.app";
 export const RESUME_URL = "/resume.pdf";
 export const RESUME_FILENAME = "Kamsicho_Raymond_Nnaegbuna_Resume.pdf";
 
-/** Key figures drawn verbatim from the resume (one source of truth). */
-export const KEY_FIGURES: ReadonlyArray<{ value: string; label: string }> = [
-  { value: "96", label: "edge functions migrated" },
-  { value: "3x", label: "monthly deployments" },
-  { value: "<200ms", label: "message latency" },
-  { value: "94%", label: "validation accuracy" },
-  { value: "4.37", label: "CGPA" },
-];
-
 export const NAV_ITEMS: ReadonlyArray<{ href: string; label: string }> = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
@@ -52,12 +43,13 @@ export const profile: Profile = {
   name: "Kamsicho Raymond Nnaegbuna",
   shortName: "Kamsicho Nnaegbuna",
   headline: "Software Engineer | AI/ML Developer",
-  role: "CTO, Eventix Africa",
+  role: "Software Engineer",
   summary:
     "Software Engineer specializing in full-stack development and applied AI/ML, with experience building production web platforms, AI-powered systems, and backend infrastructure.",
   about: [
     "Software engineer building full-stack platforms and applied AI/ML — RAG pipelines, multi-agent orchestration, and real-time inference. I lead engineering at Eventix Africa and recently shipped Efinsuite's tax and accounting migration across 96 edge functions.",
-    "Earlier: CI/CD and containerised Node services at Greysoft, Python test tooling at Emerging Trees, and TypeScript component work at CoLab. B.Sc. Software Engineering, Veritas University Abuja, CGPA 4.37.",
+    "Earlier: CI/CD and containerised Node services at Greysoft, Python test tooling at Emerging Trees, and TypeScript component work at CoLab.",
+    "B.Sc. Software Engineering, Veritas University Abuja, CGPA 4.37.",
   ],
   openToWork: false,
   contact: {
@@ -324,3 +316,15 @@ export const education: Education = {
     "Database Management",
   ],
 };
+
+/**
+ * First-glance figures for the hero. Every value is derived from the arrays
+ * above, so the strip stays accurate as the data file changes — nothing is
+ * typed twice.
+ */
+export const KEY_FIGURES: ReadonlyArray<{ value: string; label: string }> = [
+  { value: String(projects.length), label: "products shipped" },
+  { value: String(experience.length), label: "companies, intern → CTO" },
+  { value: String(skillPoints.length), label: "tools on the map" },
+  { value: String(skillClusters.length), label: "engineering domains" },
+];

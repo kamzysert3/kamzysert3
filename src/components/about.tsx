@@ -14,7 +14,7 @@ export function About() {
         <SectionHeading
           index="01"
           title="About"
-          lead="The short version, drawn from the resume. No claims here that aren't in it."
+          lead="Where I work, what I build, and how the past few years went."
         />
 
         <div className="grid gap-10 lg:grid-cols-12">
@@ -37,7 +37,7 @@ export function About() {
           </div>
 
           <div className="lg:col-span-6 lg:pl-10">
-            <figure className="max-w-[15rem]">
+            <figure className="max-w-[15rem] lg:align-right lg:ml-auto lg:max-w-[18rem]">
               <div className="duotone aspect-square overflow-hidden rounded-sm border border-border">
                 <img
                   src={profileImage}

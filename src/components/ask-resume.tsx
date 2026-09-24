@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Search } from "lucide-react";
 import { getResumeIndex, SUGGESTED_QUERIES, type ScoredChunk } from "@/lib/bm25";
 
@@ -7,17 +7,32 @@ export function AskResume() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<ScoredChunk[]>([]);
   const [searched, setSearched] = useState(false);
+  const timer = useRef<number | undefined>(undefined);
 
-  const runSearch = (q: string) => {
-    const trimmed = q.trim();
+  const execute = useCallback(
+    (trimmed: string) => {
+      if (!trimmed) {
+        setResults([]);
+        setSearched(false);
+        return;
+      }
+      setResults(index.search(trimmed, 6));
+      setSearched(true);
+    },
+    [index],
+  );
+
+  useEffect(() => {
+    const trimmed = query.trim();
+    window.clearTimeout(timer.current);
     if (!trimmed) {
       setResults([]);
       setSearched(false);
       return;
     }
-    setResults(index.search(trimmed, 6));
-    setSearched(true);
-  };
+    timer.current = window.setTimeout(() => execute(trimmed), 160);
+    return () => window.clearTimeout(timer.current);
+  }, [query, execute]);
 
   return (
     <section
@@ -30,7 +45,7 @@ export function AskResume() {
             Ask the resume
           </h3>
           <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-            keyword retrieval — BM25, no LLM
+            keyword retrieval
           </p>
         </div>
       </div>
@@ -39,7 +54,8 @@ export function AskResume() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            runSearch(query);
+            window.clearTimeout(timer.current);
+            execute(query.trim());
           }}
         >
           <label htmlFor="ask-resume-query" className="sr-only">
@@ -70,10 +86,7 @@ export function AskResume() {
             <button
               key={q}
               type="button"
-              onClick={() => {
-                setQuery(q);
-                runSearch(q);
-              }}
+              onClick={() => setQuery(q)}
               className="rounded-sm border border-border px-2 py-1 font-mono text-[11px] text-muted-foreground transition-colors hover:border-signal/50 hover:text-foreground"
             >
               {q}
@@ -108,11 +121,6 @@ export function AskResume() {
             ))}
           </ol>
         )}
-
-        <p className="mt-4 border-t border-border pt-3 font-mono text-[11px] leading-relaxed text-muted-foreground">
-          BM25 = term-frequency × inverse-document-frequency over the resume chunks. Runs entirely in
-          your browser; no model, no network call.
-        </p>
       </div>
     </section>
   );

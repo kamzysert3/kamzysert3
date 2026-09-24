@@ -22,12 +22,14 @@ function readNavigationTiming(): NavTiming {
 
 interface TraceRow {
   label: string;
+  description: string;
   value: number | null;
   unit: string;
   live?: boolean;
 }
 
 export function RequestTrace() {
+  const metricId = (label: string) => `trace-${label.toLowerCase().replace(/\s+/g, "-")}-tip`;
   const [nav] = useState<NavTiming>(readNavigationTiming);
   const [lcp, setLcp] = useState<number | null>(null);
   const [cls, setCls] = useState<number | null>(null);
@@ -69,11 +71,37 @@ export function RequestTrace() {
   }, []);
 
   const rows: TraceRow[] = [
-    { label: "TTFB", value: nav.ttfb, unit: "ms" },
-    { label: "DOM content loaded", value: nav.dcl, unit: "ms" },
-    { label: "Load", value: nav.load, unit: "ms" },
-    { label: "LCP", value: lcp, unit: "ms", live: true },
-    { label: "CLS", value: cls, unit: "" },
+    {
+      label: "TTFB",
+      description: "Time to first byte: request sent until the first byte of the response arrived.",
+      value: nav.ttfb,
+      unit: "ms",
+    },
+    {
+      label: "DOM content loaded",
+      description: "HTML parsed and blocking resources done; listener scripts attach before images finish.",
+      value: nav.dcl,
+      unit: "ms",
+    },
+    {
+      label: "Load",
+      description: "Whole page finished: scripts, stylesheets, and images all fetched.",
+      value: nav.load,
+      unit: "ms",
+    },
+    {
+      label: "LCP",
+      description: "When the largest element (the hero text) became visible. Updates live as the page paints.",
+      value: lcp,
+      unit: "ms",
+      live: true,
+    },
+    {
+      label: "CLS",
+      description: "Cumulative layout shift: how much the page jumped while loading. 0 = stable.",
+      value: cls,
+      unit: "",
+    },
   ];
 
   const numeric = rows.map((r) => r.value).filter((v): v is number => v !== null);
@@ -99,8 +127,17 @@ export function RequestTrace() {
       <div role="img" aria-label={`Page load timing: ${liveLabel}`} className="px-4 py-4">
         <ul className="flex flex-col gap-2.5">
           {rows.map((row) => (
-            <li key={row.label} className="grid grid-cols-[9rem_1fr] items-center gap-3 sm:grid-cols-[10rem_1fr]">
-              <span className="truncate font-mono text-xs text-muted-foreground">{row.label}</span>
+            <li
+              key={row.label}
+              className="group relative grid grid-cols-[9rem_1fr] items-center gap-3 sm:grid-cols-[10rem_1fr]"
+            >
+              <span
+                tabIndex={0}
+                aria-describedby={metricId(row.label)}
+                className="truncate font-mono text-xs text-muted-foreground underline decoration-dashed decoration-transparent decoration-1 underline-offset-4 outline-none transition-colors duration-150 hover:text-foreground focus-visible:text-foreground focus-visible:decoration-signal focus-visible:ring-2 focus-visible:ring-signal/40 focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+              >
+                {row.label}
+              </span>
               <div className="flex items-center gap-3">
                 <div className="h-2 flex-1 overflow-hidden rounded-[1px] bg-muted">
                   {row.value !== null && (
@@ -116,6 +153,13 @@ export function RequestTrace() {
                   {row.value === null ? "—" : row.unit === "ms" ? `${Math.round(row.value)}ms` : row.value.toFixed(3)}
                 </span>
               </div>
+              <span
+                id={metricId(row.label)}
+                role="tooltip"
+                className="pointer-events-none absolute right-0 top-full z-10 mt-2 w-64 max-w-[calc(100%-1rem)] rounded-sm border border-border bg-card px-3 py-2 font-mono text-[11px] leading-relaxed text-muted-foreground opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100"
+              >
+                {row.description}
+              </span>
             </li>
           ))}
         </ul>
