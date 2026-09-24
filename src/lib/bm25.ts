@@ -3,7 +3,7 @@
  * This is keyword retrieval only — there is no LLM involved. Scores are raw
  * BM25 scores, useful for ranking, not for absolute comparison across queries.
  */
-import { experience, projects, education, profile } from "@/data/resume";
+import { experience, projects, education, profile, skillClusters, skillPoints } from "@/data/resume";
 
 export interface ResumeChunk {
   id: string;
@@ -33,6 +33,15 @@ export function buildResumeChunks(): ResumeChunk[] {
     if (p.stat) {
       chunks.push({ id: `project-${p.id}-stat`, text: `${p.stat.value} ${p.stat.label}`, source });
     }
+    chunks.push({ id: `project-${p.id}-tags`, text: p.tags.join(" "), source });
+  });
+  skillClusters.forEach((cluster) => {
+    const skills = skillPoints.filter((p) => p.cluster === cluster.id).map((p) => p.name);
+    chunks.push({
+      id: `skills-${cluster.id}`,
+      text: skills.join(" "),
+      source: `Skills · ${cluster.label}`,
+    });
   });
   chunks.push({
     id: "education",
@@ -46,9 +55,22 @@ const STOP_WORDS = new Set([
   "and", "the", "for", "with", "across", "from", "into", "that", "this", "these", "are", "you", "your", "was", "were", "had", "has", "have", "its", "they", "them", "their", "than", "then", "over", "under", "about", "also", "via", "per", "not", "but", "out", "off", "own", "on", "in", "at", "of", "to", "a", "an", "is",
 ]);
 
+function pushToken(tokens: string[], candidate: string) {
+  if (candidate.length > 1 && !STOP_WORDS.has(candidate)) tokens.push(candidate);
+}
+
 function tokenize(text: string): string[] {
-  const raw = text.toLowerCase().match(/[a-z0-9]+/g) ?? [];
-  return raw.filter((t) => t.length > 1 && !STOP_WORDS.has(t));
+  const tokens: string[] = [];
+  for (const run of text.toLowerCase().match(/[a-z0-9]+/g) ?? []) {
+    pushToken(tokens, run);
+  }
+  for (const word of text.toLowerCase().match(/\S+/g) ?? []) {
+    const runs = word.match(/[a-z0-9]{2,}/g);
+    if (!runs || runs.length < 2) continue;
+    const compact = word.replace(/[^a-z0-9]/g, "");
+    if (compact.length >= 2 && compact.length <= 10) pushToken(tokens, compact);
+  }
+  return tokens;
 }
 
 interface IndexedDoc {
