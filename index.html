@@ -1,71 +1,63 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" suppressHydrationWarning>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Kamsicho Raymond Nnaegbuna | Full-Stack Developer & AI Engineer
-    </title>
+
+    <title>Kamsicho Raymond Nnaegbuna | Software Engineer | AI/ML Developer</title>
 
     <!-- Primary Meta Tags -->
     <meta
-      name="title"
-      content="Kamsicho Raymond Nnaegbuna | Full-Stack Developer & AI Engineer"
-    />
-    <meta
       name="description"
-      content="Portfolio of Kamsicho Raymond Nnaegbuna - Full-Stack Developer & AI Engineer specializing in React, Node.js, Python, and Machine Learning. Software Engineering student at Veritas University Abuja."
+      content="Software Engineer specializing in full-stack development and applied AI/ML — RAG pipelines, multi-agent orchestration, and real-time inference. CTO of Eventix Africa. B.Sc. Software Engineering, Veritas University Abuja."
     />
     <meta name="author" content="Kamsicho Raymond Nnaegbuna" />
-    <meta
-      name="keywords"
-      content="Full-Stack Developer, AI Engineer, React, Node.js, Python, Machine Learning, Software Engineer, Portfolio, Nigeria"
-    />
-
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://kamsicho.vercel.app/" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta
-      property="og:site_name"
-      content="Kamsicho Raymond Nnaegbuna Portfolio"
-    />
+    <meta property="og:site_name" content="Kamsicho Raymond Nnaegbuna" />
     <meta property="og:url" content="https://kamsicho.vercel.app/" />
-    <meta
-      property="og:title"
-      content="Kamsicho Raymond Nnaegbuna | Full-Stack Developer & AI Engineer"
-    />
+    <meta property="og:title" content="Kamsicho Raymond Nnaegbuna | Software Engineer | AI/ML Developer" />
     <meta
       property="og:description"
-      content="Portfolio of Kamsicho Raymond Nnaegbuna - Full-Stack Developer & AI Engineer specializing in React, Node.js, Python, and Machine Learning."
+      content="Software Engineer specializing in full-stack development and applied AI/ML — RAG pipelines, multi-agent orchestration, and real-time inference. CTO of Eventix Africa."
     />
-    <meta property="og:image" content="/src/assets/meta-image.png" />
+    <meta property="og:image" content="https://kamsicho.vercel.app/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://kamsicho.vercel.app/" />
-    <meta
-      name="twitter:title"
-      content="Kamsicho Raymond Nnaegbuna | Full-Stack Developer & AI Engineer"
-    />
+    <meta name="twitter:title" content="Kamsicho Raymond Nnaegbuna | Software Engineer | AI/ML Developer" />
     <meta
       name="twitter:description"
-      content="Portfolio of Kamsicho Raymond Nnaegbuna - Full-Stack Developer & AI Engineer specializing in React, Node.js, Python, and Machine Learning."
+      content="Software Engineer specializing in full-stack development and applied AI/ML — RAG pipelines, multi-agent orchestration, and real-time inference."
     />
-    <meta name="twitter:image" content="/src/assets/meta-image.png" />
+    <meta name="twitter:image" content="https://kamsicho.vercel.app/og.png" />
 
-    <!-- Preload fonts or critical assets if any -->
-    <!-- Example: <link rel="preload" href="/src/assets/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin> -->
+    <!-- Fonts are self-hosted via @fontsource variables; no external font requests -->
 
-    <!-- Favicon -->
+    <!-- Theme guard: apply saved/system theme before paint to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var dark =
+            stored === "dark" ||
+            ((stored === null || stored === "system") &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
+
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
 
   <body>
     <div id="root"></div>
-
-    <!-- Main JS -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

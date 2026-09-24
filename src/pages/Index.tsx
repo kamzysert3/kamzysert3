@@ -1,33 +1,48 @@
-import { useEffect } from "react";
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ExperienceSection from "@/components/ExperienceSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import SkillsSection from "@/components/SkillsSection";
-import EducationSection from "@/components/EducationSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { SiteHeader } from "@/components/site-header";
+import { Hero } from "@/components/hero";
+import { About } from "@/components/about";
+import { ExperienceLog } from "@/components/experience-log";
+import { Projects } from "@/components/projects";
+import { SkillsVectorMap } from "@/components/skills-map";
+import { Education } from "@/components/education";
+import { Contact } from "@/components/contact";
+import { SiteFooter } from "@/components/site-footer";
+
+const CommandPalette = lazy(() =>
+  import("@/components/command-palette").then((m) => ({ default: m.CommandPalette })),
+);
 
 const Index = () => {
+  const [commandOpen, setCommandOpen] = useState(false);
+
   useEffect(() => {
-    // Add dark class to enable dark theme
-    document.documentElement.classList.add("dark");
+    const onKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setCommandOpen((v) => !v);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <ExperienceSection />
-        <ProjectsSection />
-        <SkillsSection />
-        <EducationSection />
-        <ContactSection />
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
+      <SiteHeader onOpenCommand={() => setCommandOpen(true)} />
+      <main className="flex-1">
+        <Hero />
+        <About />
+        <ExperienceLog />
+        <Projects />
+        <SkillsVectorMap />
+        <Education />
+        <Contact />
       </main>
-      <Footer />
+      <SiteFooter />
+      <Suspense fallback={null}>
+        <CommandPalette open={commandOpen} onOpenChange={setCommandOpen} />
+      </Suspense>
     </div>
   );
 };
